@@ -6,7 +6,7 @@ exit;
 $CONF = array();
 $CONF["host"] = "localhost";
 $CONF["user"] = "beejee";
-$CONF["pass"] = "fB7sX1vU0fdP3i";
+$CONF["pass"] = "";
 $CONF["name"] = "beejee";
 
 $db = new mysqli($CONF['host'], $CONF['user'], $CONF['pass'], $CONF['name']);
