@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /
+RewriteRule ^(login|exit|main|edit|oops)?$ index.php?p=$1 [QSA,L,NC]
+RewriteRule ^main/(.*)?$ index.php?p=main&page=$1 [L]
+RewriteRule ^edit/(.*)?$ index.php?p=edit&id=$1 [L]
+ErrorDocument 404 http://%{HTTP_HOST}/oops
