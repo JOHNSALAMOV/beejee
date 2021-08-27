@@ -79,28 +79,31 @@ include_once "header.php";
 <table class="table table-striped">
 <thead>
 <tr>
-<th width="40%">Задача <a href="/?a=main&type=sortA">&#9650;</a> <a href="/?a=main&type=sortB">&#9660;</a></th>
+<th width="45%">Задача <a href="/?a=main&type=sortA">&#9650;</a> <a href="/?a=main&type=sortB">&#9660;</a></th>
 <th width="15%">Имя</th>
 <th width="15%">Почта</th>
+<th width="10%">Статус</th>
 <th width="15%">Дата</th>
 </tr>
 </thead>
 <tbody>
 
-<?php
+<?
 $query = $db->query("SELECT * FROM sl_todo ORDER BY id DESC LIMIT {$startpoint} , {$limit}");
 if($query->num_rows>0) {
 while($row = $query->fetch_assoc()) {
 ?>
 
 <tr>
-<td><?php echo $row['todo']; ?><? if(checkSession()){ echo '<a href="/edit/'.$row['id'].'"> - редактировать</a>'; } ?><br/><div class="flex_type"><?php if ($row['status'] == 1){echo '<div class="admin_complete">* Выполнено</div>';} if ($row['admin_edit'] == 1){echo '<div class="admin_edited"> * Отр. Админом</div>';}; ?></div></td>
-<td><?php echo $row['name']; ?></td>
-<td><?php echo $row['email']; ?></td>
-<td><?php echo date('d-m-Y в H:i',$row['date']); ?></td>
+<td><? echo $row['todo']; ?><? if(checkSession()){ echo '<a href="/edit/'.$row['id'].'"> - редактировать</a>'; } ?><br/>
+<? if ($row['admin_edit'] == 1){echo '<div class="admin_edited">Отредактировано Администратором</div>';}; ?></td>
+<td><? echo $row['name']; ?></td>
+<td><? echo $row['email']; ?></td>
+<td><? if($row['status'] == 0){echo 'Не выполнено';}else{echo 'Выполнено';} ?></td>
+<td><? echo date('d-m-Y в H:i',$row['date']); ?></td>
 </tr>
 
-<?php
+<?
 }
 } else {
 echo '<tr><td colspan="8">Список задач пуст</td></tr>';
@@ -110,7 +113,7 @@ echo '<tr><td colspan="8">Список задач пуст</td></tr>';
 </tbody>
 </table>
 
-<?php
+<?
 $ver = "/main";
 if(pagination($ver,$limit,$page)) {
 echo pagination($ver,$limit,$page);
