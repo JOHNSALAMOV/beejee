@@ -103,18 +103,18 @@ $i = $page * $limit;
 }
 
 if(isset($_GET['type'])){
-if($_GET['type'] == 'A-ZN'){
+if(protect($_GET['type']) == 'A-ZN'){
 $query = $db->query("SELECT * FROM sl_todo ORDER BY name ASC LIMIT {$startpoint} , {$limit}");
-}elseif($_GET['type'] == 'Z-AN'){
+}elseif(protect($_GET['type']) == 'Z-AN'){
 $query = $db->query("SELECT * FROM sl_todo ORDER BY name DESC LIMIT {$startpoint} , {$limit}");
-}elseif($_GET['type'] == 'A-ZE'){
+}elseif(protect($_GET['type']) == 'A-ZE'){
 $query = $db->query("SELECT * FROM sl_todo ORDER BY email ASC LIMIT {$startpoint} , {$limit}");
-}elseif($_GET['type'] == 'Z-AE'){
+}elseif(protect($_GET['type']) == 'Z-AE'){
 $query = $db->query("SELECT * FROM sl_todo ORDER BY email DESC LIMIT {$startpoint} , {$limit}");
 echo 'ASZ';
-}elseif($_GET['type'] == 'A-ZS'){
+}elseif(protect($_GET['type']) == 'A-ZS'){
 $query = $db->query("SELECT * FROM sl_todo ORDER BY status ASC LIMIT {$startpoint} , {$limit}");
-}elseif($_GET['type'] == 'Z-AS'){
+}elseif(protect($_GET['type']) == 'Z-AS'){
 $query = $db->query("SELECT * FROM sl_todo ORDER BY status DESC LIMIT {$startpoint} , {$limit}");
 echo 'ASZ';
 }
