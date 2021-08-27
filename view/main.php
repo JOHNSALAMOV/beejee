@@ -79,17 +79,16 @@ include_once "header.php";
 <table class="table table-striped">
 <thead>
 <tr>
-<th width="45%">Задача <a href="/?a=main&type=sortA">&#9650;</a> <a href="/?a=main&type=sortB">&#9660;</a></th>
-<th width="15%">Имя</th>
-<th width="15%">Почта</th>
-<th width="10%">Статус</th>
+<th width="45%">Задача</th>
+<th width="15%">Имя <a href="/?a=main&type=A-ZN">&#9650;</a> <a href="/?a=main&type=Z-AN">&#9660;</a></th>
+<th width="15%">Почта <a href="/?a=main&type=A-ZE">&#9650;</a> <a href="/?a=main&type=Z-AE">&#9660;</a></th>
+<th width="10%">Статус <a href="/?a=main&type=A-ZS">&#9650;</a> <a href="/?a=main&type=Z-AS">&#9660;</a></th>
 <th width="15%">Дата</th>
 </tr>
 </thead>
 <tbody>
 
 <?
-$query = $db->query("SELECT * FROM sl_todo ORDER BY id DESC LIMIT {$startpoint} , {$limit}");
 if($query->num_rows>0) {
 while($row = $query->fetch_assoc()) {
 ?>
